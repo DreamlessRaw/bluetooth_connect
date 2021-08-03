@@ -26,7 +26,7 @@ class BluetoothConnectPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         private const val START_SCAN: String = "START_SCAN"
         private const val STOP_SCAN: String = "STOP_SCAN"
         private const val REGISTER: String = "REGISTER"
-        private const val UNREGISTER: String = "UN_REGISTER"
+        private const val UNREGISTER: String = "UNREGISTER"
         private const val CONNECT_AND_READ: String = "CONNECT_AND_READ"
         private const val CONNECT_AND_READ_WEIGHT: String = "CONNECT_AND_READ_WEIGHT"
         public const val DEVICE_LISTEN: String = "DEVICE_LISTEN"
@@ -189,6 +189,8 @@ class BluetoothConnectPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                                 }
                             }
                         } catch (e: Exception) {
+                            // 关闭连接
+                            socket.close()
                             Log.i(TAG, e.message.toString())
                             e.printStackTrace()
                         }
